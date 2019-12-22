@@ -11,6 +11,16 @@ http.createServer(function (request, response) {
 const express = require('express');
 const app = express();
 
+// CORS設定。異なるドメインからでも呼び出せるようにする
+app.use(function(req, res, next) {
+   res.header("Access-Control-Allow-Origin", "*");
+   res.header(
+     "Access-Control-Allow-Headers",
+     "Origin, X-Requested-With, Content-Type, Accept"
+   );
+   next();
+ });
+
 // 起動している箇所
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
@@ -31,6 +41,7 @@ app.get('/', (req, res) => {
 
 // GET /api/courses
 app.get('/api/courses', (req, res) => {
+   console.log("/api/courses");
    res.send(courses);
 });
 
