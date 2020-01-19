@@ -34,6 +34,93 @@ const courses = [
    { id: 3, name: 'business intelligence'},
 ];
 
+const beefBowl = {
+   title: "牛丼",
+   material: {
+     water : {
+       name : "水",
+       quantity: [
+         {
+           amount: 150,
+           unit: "ml"
+         }
+       ]
+     },
+     sugar: {
+       name: "砂糖",
+       quantity: [
+         {
+           amount: 1,
+           unit: "tbsp"
+         }
+       ]
+     },
+     soySauce: {
+       name: "醤油",
+       quantity: [
+         {
+           amount: 3,
+           unit: "tbsp"
+         }
+       ]
+     },
+     sweetenedSake: {
+       name: "本みりん",
+       quantity: [
+         {
+           amount: 3,
+           unit: "tbsp"
+         }
+       ]
+     },   
+     tubeGinger: {
+       name: "チューブ生姜",
+       quantity: [
+         {
+           amount: 1,
+           unit: "cm"
+         }
+       ]
+     },   
+     beefRib: {
+       name: "牛バラ肉",
+       quantity: [
+         {
+           amount: 200,
+           unit: "g"
+         }
+       ]
+     }
+
+   },
+   action: {
+     moveSugerPot : {
+       type: "move",
+       source: "sugar",
+       target: "pot",
+       comment: "砂糖を鍋へ",
+       next : "boil1"
+     },
+     moveSoySarucePot : {
+       type: "move",
+       source: "SoySauce",
+       target: "pot",
+       comment: "醤油を鍋へ",
+       next : "boil1"
+     },
+     boil1 :{
+       type : "boil",
+       source : "pot",
+       until : {
+         type : "condition",
+         state : "boiling"
+       },
+       comment : "沸騰するまで茹でる",
+       next : "finish"
+     }
+   }
+ };
+
 // GET /
 app.get('/', (req, res) => {
    res.send('Simple REST API');
@@ -43,6 +130,12 @@ app.get('/', (req, res) => {
 app.get('/api/courses', (req, res) => {
    console.log("/api/courses");
    res.send(courses);
+});
+
+// GET /api/recipies/beefBowl
+app.get('/api/recipies/beefBowl', (req, res) => {
+   console.log("/api/recipies/beefBowl");
+   res.send(beefBowl);
 });
 
 // POST /api/courses
