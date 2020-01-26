@@ -36,8 +36,15 @@ const courses = [
 
 const beefBowl = {
   title: "牛丼",
-  description : "薄く切った牛肉とタマネギなどを醤油などで甘辛く煮込み、丼に盛った飯の上に載せた料理",
-  test : {test2 : "xyz"},
+  description: "薄く切った牛肉とタマネギなどを醤油などで甘辛く煮込み、丼に盛った飯の上に載せた料理",
+  container: {
+    pot: {
+      name: "鍋"
+    },
+    bowl:{
+      name : "どんぶり"
+    }
+  },
   material: {
     rice: {
       name: "米",
@@ -124,39 +131,17 @@ const beefBowl = {
       comment: "米を炊く",
       next: "serve"
     },
-    moveWaterToPot: {
+    makeBroth: {
       type: "move",
-      source: "water",
+      source: [
+        "water",
+        "sugar",
+        "soySauce",
+        "sweetenedSake",
+        "tubeGinger"
+      ],
       target: "pot",
-      comment: "水を鍋へ",
-      next: "boil1"
-    },
-    moveSugerToPot: {
-      type: "move",
-      source: "sugar",
-      target: "pot",
-      comment: "砂糖を鍋へ",
-      next: "boil1"
-    },
-    moveSoySaruceToPot: {
-      type: "move",
-      source: "soySauce",
-      target: "pot",
-      comment: "醤油を鍋へ",
-      next: "boil1"
-    },
-    moveSweetenedSakeToPot: {
-      type: "move",
-      source: "sweetenedSake",
-      target: "pot",
-      comment: "本みりんを鍋へ",
-      next: "boil1"
-    },
-    moveTubeGingerToPot: {
-      type: "move",
-      source: "tubeGinger",
-      target: "pot",
-      comment: "チューブ生姜を鍋へ",
+      comment: "煮汁を作る",
       next: "boil1"
     },
     cutBeefRib: {
@@ -169,7 +154,7 @@ const beefBowl = {
       type: "move",
       source: "beefRib",
       target: "pot",
-      comment: "牛ばら肉を鍋へ",
+      comment: "牛ばら肉を鍋へ  ☆条件をつける。boil1が終わっていること, もしくは、boil1とboil2の間に入れる?",
       next: "boil2"
     },
     cutOnion: {
@@ -182,7 +167,7 @@ const beefBowl = {
       type: "move",
       source: "onion",
       target: "pot",
-      comment: "玉ねぎを鍋へ",
+      comment: "玉ねぎを鍋へ  ☆条件をつける。boil3が終わっていること,もしくは、boil2とboil3の間に入れる?",
       next: "boil3"
     },
     boil1: {
@@ -203,7 +188,7 @@ const beefBowl = {
         time: 5
       },
       comment: "5分間煮込む",
-      next: "boil2"
+      next: "boil3"
     },
     boil3: {
       type: "boil",
@@ -221,6 +206,7 @@ const beefBowl = {
         "rice",
         "pot"
       ],
+      target : "bowl",
       comment: "米と具を盛り付ける",
       next: "finish"
     }
