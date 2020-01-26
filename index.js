@@ -12,14 +12,14 @@ const express = require('express');
 const app = express();
 
 // CORS設定。異なるドメインからでも呼び出せるようにする
-app.use(function(req, res, next) {
-   res.header("Access-Control-Allow-Origin", "*");
-   res.header(
-     "Access-Control-Allow-Headers",
-     "Origin, X-Requested-With, Content-Type, Accept"
-   );
-   next();
- });
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 // 起動している箇所
 const port = process.env.PORT || 3000;
@@ -29,141 +29,247 @@ app.use(express.json());
 
 // DBの代わり
 const courses = [
-   { id: 1, name: 'computer science'},
-   { id: 2, name: 'information technology'},
-   { id: 3, name: 'business intelligence'},
+  { id: 1, name: 'computer science' },
+  { id: 2, name: 'information technology' },
+  { id: 3, name: 'business intelligence' },
 ];
 
 const beefBowl = {
-   title: "牛丼",
-   material: {
-     water : {
-       name : "水",
-       quantity: [
-         {
-           amount: 150,
-           unit: "ml"
-         }
-       ]
-     },
-     sugar: {
-       name: "砂糖",
-       quantity: [
-         {
-           amount: 1,
-           unit: "tbsp"
-         }
-       ]
-     },
-     soySauce: {
-       name: "醤油",
-       quantity: [
-         {
-           amount: 3,
-           unit: "tbsp"
-         }
-       ]
-     },
-     sweetenedSake: {
-       name: "本みりん",
-       quantity: [
-         {
-           amount: 3,
-           unit: "tbsp"
-         }
-       ]
-     },   
-     tubeGinger: {
-       name: "チューブ生姜",
-       quantity: [
-         {
-           amount: 1,
-           unit: "cm"
-         }
-       ]
-     },   
-     beefRib: {
-       name: "牛バラ肉",
-       quantity: [
-         {
-           amount: 200,
-           unit: "g"
-         }
-       ]
-     }
+  title: "牛丼",
+  description : "薄く切った牛肉とタマネギなどを醤油などで甘辛く煮込み、丼に盛った飯の上に載せた料理",
+  test : {test2 : "xyz"},
+  material: {
+    rice: {
+      name: "米",
+      quantity: [
+        {
+          amount: 1,
+          unit: "go"
+        }
+      ]
+    },
+    water: {
+      name: "水",
+      quantity: [
+        {
+          amount: 150,
+          unit: "ml"
+        }
+      ]
+    },
+    sugar: {
+      name: "砂糖",
+      quantity: [
+        {
+          amount: 1,
+          unit: "tbsp"
+        }
+      ]
+    },
+    soySauce: {
+      name: "醤油",
+      quantity: [
+        {
+          amount: 3,
+          unit: "tbsp"
+        }
+      ]
+    },
+    sweetenedSake: {
+      name: "本みりん",
+      quantity: [
+        {
+          amount: 3,
+          unit: "tbsp"
+        }
+      ]
+    },
+    tubeGinger: {
+      name: "チューブ生姜",
+      quantity: [
+        {
+          amount: 1,
+          unit: "cm"
+        }
+      ]
+    },
+    beefRib: {
+      name: "牛バラ肉",
+      quantity: [
+        {
+          amount: 200,
+          unit: "g"
+        }
+      ]
+    },
+    onion: {
+      name: "玉ねぎ",
+      quantity: [
+        {
+          amount: 0.5,
+          unit: "pieces"
+        },
+        {
+          amount: 100,
+          unit: "g"
+        }
+      ]
+    }
 
-   },
-   action: {
-     moveSugerPot : {
-       type: "move",
-       source: "sugar",
-       target: "pot",
-       comment: "砂糖を鍋へ",
-       next : "boil1"
-     },
-     moveSoySarucePot : {
-       type: "move",
-       source: "SoySauce",
-       target: "pot",
-       comment: "醤油を鍋へ",
-       next : "boil1"
-     },
-     boil1 :{
-       type : "boil",
-       source : "pot",
-       until : {
-         type : "condition",
-         state : "boiling"
-       },
-       comment : "沸騰するまで茹でる",
-       next : "finish"
-     }
-   }
- };
+  },
+  action: {
+    cookRice: {
+      type: "cookRice",
+      source: "rice",
+      comment: "米を炊く",
+      next: "serve"
+    },
+    moveWaterToPot: {
+      type: "move",
+      source: "water",
+      target: "pot",
+      comment: "水を鍋へ",
+      next: "boil1"
+    },
+    moveSugerToPot: {
+      type: "move",
+      source: "sugar",
+      target: "pot",
+      comment: "砂糖を鍋へ",
+      next: "boil1"
+    },
+    moveSoySaruceToPot: {
+      type: "move",
+      source: "soySauce",
+      target: "pot",
+      comment: "醤油を鍋へ",
+      next: "boil1"
+    },
+    moveSweetenedSakeToPot: {
+      type: "move",
+      source: "sweetenedSake",
+      target: "pot",
+      comment: "本みりんを鍋へ",
+      next: "boil1"
+    },
+    moveTubeGingerToPot: {
+      type: "move",
+      source: "tubeGinger",
+      target: "pot",
+      comment: "チューブ生姜を鍋へ",
+      next: "boil1"
+    },
+    cutBeefRib: {
+      type: "cut",
+      source: "beefRib",
+      comment: "牛ばら肉を切る",
+      next: "moveBeefRibToPot"
+    },
+    moveBeefRibToPot: {
+      type: "move",
+      source: "beefRib",
+      target: "pot",
+      comment: "牛ばら肉を鍋へ",
+      next: "boil2"
+    },
+    cutOnion: {
+      type: "cut",
+      source: "onion",
+      comment: "玉ねぎを1cm幅に切る",
+      next: "moveOnionToPot"
+    },
+    moveOnionToPot: {
+      type: "move",
+      source: "onion",
+      target: "pot",
+      comment: "玉ねぎを鍋へ",
+      next: "boil3"
+    },
+    boil1: {
+      type: "boil",
+      source: "pot",
+      until: {
+        type: "condition",
+        state: "boiling"
+      },
+      comment: "沸騰するまで茹でる",
+      next: "boil2"
+    },
+    boil2: {
+      type: "boil",
+      source: "pot",
+      until: {
+        type: "time",
+        time: 5
+      },
+      comment: "5分間煮込む",
+      next: "boil2"
+    },
+    boil3: {
+      type: "boil",
+      source: "pot",
+      until: {
+        type: "time",
+        time: 10
+      },
+      comment: "10分間煮込む",
+      next: "serve"
+    },
+    serve: {
+      type: "serve",
+      source: [
+        "rice",
+        "pot"
+      ],
+      comment: "米と具を盛り付ける",
+      next: "finish"
+    }
+  }
+};
 
 // GET /
 app.get('/', (req, res) => {
-   res.send('Simple REST API');
+  res.send('Simple REST API');
 });
 
 // GET /api/courses
 app.get('/api/courses', (req, res) => {
-   console.log("/api/courses");
-   res.send(courses);
+  console.log("/api/courses");
+  res.send(courses);
 });
 
 // GET /api/recipies/beefBowl
 app.get('/api/recipies/beefBowl', (req, res) => {
-   console.log("/api/recipies/beefBowl");
-   res.send(beefBowl);
+  console.log("/api/recipies/beefBowl");
+  res.send(beefBowl);
 });
 
 // POST /api/courses
 app.post('/api/courses', (req, res) => {
-   const course = {
-       id: courses.length + 1,
-       name: req.body.name
-   };
-   courses.push(course);
-   res.send(course);
+  const course = {
+    id: courses.length + 1,
+    name: req.body.name
+  };
+  courses.push(course);
+  res.send(course);
 });
 
 // PUT /api/courses/1
 app.put('/api/courses/:id', (req, res) => {
-   const course = courses.find(c => c.id === parseInt(req.params.id));
-   if (!course) return res.status(404).send('The course with the given ID was not found.');
+  const course = courses.find(c => c.id === parseInt(req.params.id));
+  if (!course) return res.status(404).send('The course with the given ID was not found.');
 
-   course.name = req.body.name;
-   res.send(course);
+  course.name = req.body.name;
+  res.send(course);
 });
 
 // DELETE /api/courses/1
 app.delete('/api/courses/:id', (req, res) => {
-   const course = courses.find(c => c.id === parseInt(req.params.id));
-   if (!course) return res.status(404).send('The course with the given ID was not found.');
+  const course = courses.find(c => c.id === parseInt(req.params.id));
+  if (!course) return res.status(404).send('The course with the given ID was not found.');
 
-   const index = courses.indexOf(course);
-   courses.splice(index, 1);
+  const index = courses.indexOf(course);
+  courses.splice(index, 1);
 
-   res.send(course);
+  res.send(course);
 });
