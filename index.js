@@ -187,7 +187,7 @@ const beefBowl = {
       type: "move",
       source: "onion",
       target: "pot",
-      comment: "玉ねぎを鍋へ  ☆条件をつける。boil3が終わっていること,もしくは、boil2とboil3の間に入れる?",
+      comment: "玉ねぎを鍋へ",
       next: "boil3"
     },
     boil3: {
