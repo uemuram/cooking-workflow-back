@@ -150,25 +150,11 @@ const beefBowl = {
       comment: "牛ばら肉を切る",
       next: "moveBeefRibToPot"
     },
-    moveBeefRibToPot: {
-      type: "move",
-      source: "beefRib",
-      target: "pot",
-      comment: "牛ばら肉を鍋へ  ☆条件をつける。boil1が終わっていること, もしくは、boil1とboil2の間に入れる?",
-      next: "boil2"
-    },
     cutOnion: {
       type: "cut",
       source: "onion",
       comment: "玉ねぎを1cm幅に切る",
       next: "moveOnionToPot"
-    },
-    moveOnionToPot: {
-      type: "move",
-      source: "onion",
-      target: "pot",
-      comment: "玉ねぎを鍋へ  ☆条件をつける。boil3が終わっていること,もしくは、boil2とboil3の間に入れる?",
-      next: "boil3"
     },
     boil1: {
       type: "boil",
@@ -178,6 +164,13 @@ const beefBowl = {
         state: "boiling"
       },
       comment: "沸騰するまで茹でる",
+      next: "moveBeefRibToPot"
+    },
+    moveBeefRibToPot: {
+      type: "move",
+      source: "beefRib",
+      target: "pot",
+      comment: "牛ばら肉を鍋へ",
       next: "boil2"
     },
     boil2: {
@@ -188,6 +181,13 @@ const beefBowl = {
         time: 5
       },
       comment: "5分間煮込む",
+      next: "moveOnionToPot"
+    },
+    moveOnionToPot: {
+      type: "move",
+      source: "onion",
+      target: "pot",
+      comment: "玉ねぎを鍋へ  ☆条件をつける。boil3が終わっていること,もしくは、boil2とboil3の間に入れる?",
       next: "boil3"
     },
     boil3: {
