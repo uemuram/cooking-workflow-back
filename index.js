@@ -132,7 +132,7 @@ const beefBowl = {
       next: "serve"
     },
     makeBroth: {
-      type: "move",
+      type: "add",
       source: [
         "water",
         "sugar",
@@ -148,13 +148,13 @@ const beefBowl = {
       type: "cut",
       source: "beefRib",
       comment: "牛ばら肉を切る",
-      next: "moveBeefRibToPot"
+      next: "addBeefRibToPot"
     },
     cutOnion: {
       type: "cut",
       source: "onion",
       comment: "玉ねぎを1cm幅に切る",
-      next: "moveOnionToPot"
+      next: "addOnionToPot"
     },
     boil1: {
       type: "boil",
@@ -164,10 +164,10 @@ const beefBowl = {
         state: "boiling"
       },
       comment: "沸騰するまで茹でる",
-      next: "moveBeefRibToPot"
+      next: "addBeefRibToPot"
     },
-    moveBeefRibToPot: {
-      type: "move",
+    addBeefRibToPot: {
+      type: "add",
       source: "beefRib",
       target: "pot",
       comment: "牛ばら肉を鍋へ",
@@ -181,10 +181,10 @@ const beefBowl = {
         time: 5
       },
       comment: "5分間煮込む",
-      next: "moveOnionToPot"
+      next: "addOnionToPot"
     },
-    moveOnionToPot: {
-      type: "move",
+    addOnionToPot: {
+      type: "add",
       source: "onion",
       target: "pot",
       comment: "玉ねぎを鍋へ",
