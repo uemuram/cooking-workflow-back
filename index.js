@@ -34,6 +34,129 @@ const courses = [
   { id: 3, name: 'business intelligence' },
 ];
 
+const test2 = {
+  title: "テスト2",
+  description: "テスト2",
+  container: {},
+  material: {},
+  action: {
+    a: {
+      next: "f"
+    },
+    b: {
+      next: ["c", "d"]
+    },
+    c: {
+      next: "e"
+    },
+    d: {
+      next: "e"
+    },
+    e: {
+      next: "f"
+    },
+    f: {
+      next: "finish"
+    }
+  }
+};
+
+const test3 = {
+  title: "テスト3",
+  description: "テスト3",
+  container: {},
+  material: {},
+  action: {
+    a: {
+      next: "c"
+    },
+    b: {
+      next: ["f", "d"]
+    },
+    c: {
+      next: "e"
+    },
+    d: {
+      next: ["f", "g"]
+    },
+    e: {
+      next: "finish"
+    },
+    f: {
+      next: "h"
+    },
+    g: {
+      next: ["i", "j"]
+    },
+    h: {
+      next: "k"
+    },
+    i: {
+      next: "m"
+    },
+    j: {
+      next: "m"
+    },
+    k: {
+      next: "l"
+    },
+    l: {
+      next: "m"
+    },
+    m: {
+      next: "finish"
+    }
+  }
+};
+
+const test4 = {
+  title: "テスト3",
+  description: "テスト3",
+  container: {},
+  material: {},
+  action: {
+    a: {
+      next: "c"
+    },
+    b: {
+      next: [
+        "d"
+      ]
+    },
+    c: {
+      next: ["e", "f"]
+    },
+    d: {
+      next: [
+        "g"
+      ]
+    },
+    e: {
+      next: "j"
+    },
+    f: {
+      next: ["h", "i"]
+    },
+    g: {
+      next: [
+        "finish"
+      ]
+    },
+    h: {
+      next: "j"
+    },
+    i: {
+      next: "k"
+    },
+    j: {
+      next: "k"
+    },
+    k: {
+      next: "finish"
+    }
+  }
+};
+
 const beefBowl = {
   title: "牛丼",
   description: "薄く切った牛肉とタマネギなどを醤油などで甘辛く煮込み、丼に盛った飯の上に載せた料理",
@@ -41,8 +164,8 @@ const beefBowl = {
     pot: {
       name: "鍋"
     },
-    bowl:{
-      name : "どんぶり"
+    bowl: {
+      name: "どんぶり"
     }
   },
   material: {
@@ -206,7 +329,7 @@ const beefBowl = {
         "rice",
         "pot"
       ],
-      target : "bowl",
+      target: "bowl",
       comment: "米と具を盛り付ける",
       next: "finish"
     }
@@ -228,6 +351,8 @@ app.get('/api/courses', (req, res) => {
 app.get('/api/recipies/beefBowl', (req, res) => {
   console.log("/api/recipies/beefBowl");
   res.send(beefBowl);
+  //res.send(test2);
+  //res.send(test4);
 });
 
 // POST /api/courses
