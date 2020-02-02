@@ -110,8 +110,8 @@ const test3 = {
 };
 
 const test4 = {
-  title: "テスト3",
-  description: "テスト3",
+  title: "xx料理",
+  description: "yyをzzした料理です",
   container: {},
   material: {},
   action: {
@@ -350,9 +350,9 @@ app.get('/api/courses', (req, res) => {
 // GET /api/recipies/beefBowl
 app.get('/api/recipies/beefBowl', (req, res) => {
   console.log("/api/recipies/beefBowl");
-  res.send(beefBowl);
+  //res.send(beefBowl);
   //res.send(test2);
-  //res.send(test4);
+  res.send(test4);
 });
 
 // POST /api/courses
