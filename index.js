@@ -255,6 +255,7 @@ const beefBowl = {
       next: "serve"
     },
     makeBroth: {
+      title: "煮汁を作る",
       type: "add",
       source: [
         "water",
@@ -297,7 +298,7 @@ const beefBowl = {
       next: "boil2"
     },
     boil2: {
-      type: "boil",
+      type: "stew",
       source: "pot",
       until: {
         type: "time",
@@ -314,7 +315,7 @@ const beefBowl = {
       next: "boil3"
     },
     boil3: {
-      type: "boil",
+      type: "stew",
       source: "pot",
       until: {
         type: "time",
