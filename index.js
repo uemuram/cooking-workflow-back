@@ -112,9 +112,9 @@ const test3 = {
 const test4 = {
   title: "xx料理",
   description: "yyをzzした料理です",
-  container: {},
-  material: {},
-  action: {
+  containers: {},
+  materials: {},
+  actions: {
     a: {
       next: "c"
     },
@@ -160,7 +160,7 @@ const test4 = {
 const beefBowl = {
   title: "牛丼",
   description: "薄く切った牛肉とタマネギなどを醤油などで甘辛く煮込み、丼に盛った飯の上に載せた料理",
-  container: {
+  containers: {
     pot: {
       name: "鍋"
     },
@@ -168,7 +168,7 @@ const beefBowl = {
       name: "どんぶり"
     }
   },
-  material: {
+  materials: {
     rice: {
       name: "米",
       quantity: [
@@ -247,7 +247,7 @@ const beefBowl = {
     }
 
   },
-  action: {
+  actions: {
     cookRice: {
       type: "cookRice",
       source: "rice",
@@ -266,7 +266,7 @@ const beefBowl = {
       ],
       target: "pot",
       comment: "煮汁を作る",
-      next: "boil1"
+      next: "boil"
     },
     cutBeefRib: {
       type: "cut",
@@ -280,7 +280,7 @@ const beefBowl = {
       comment: "玉ねぎを1cm幅に切る",
       next: "addOnionToPot"
     },
-    boil1: {
+    boil: {
       type: "bringToABoil",
       source: "pot",
       comment: "沸騰するまで茹でる",
@@ -291,9 +291,9 @@ const beefBowl = {
       source: "beefRib",
       target: "pot",
       comment: "牛ばら肉を鍋へ",
-      next: "boil2"
+      next: "stew1"
     },
-    boil2: {
+    stew1: {
       type: "stew",
       source: "pot",
       until: {
@@ -308,9 +308,9 @@ const beefBowl = {
       source: "onion",
       target: "pot",
       comment: "玉ねぎを鍋へ",
-      next: "boil3"
+      next: "stew2"
     },
-    boil3: {
+    stew2: {
       type: "stew",
       source: "pot",
       until: {
