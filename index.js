@@ -281,12 +281,8 @@ const beefBowl = {
       next: "addOnionToPot"
     },
     boil1: {
-      type: "boil",
+      type: "bringToABoil",
       source: "pot",
-      until: {
-        type: "condition",
-        state: "boiling"
-      },
       comment: "沸騰するまで茹でる",
       next: "addBeefRibToPot"
     },
@@ -302,7 +298,7 @@ const beefBowl = {
       source: "pot",
       until: {
         type: "time",
-        time: 5
+        value: 5
       },
       comment: "5分間煮込む",
       next: "addOnionToPot"
@@ -319,7 +315,7 @@ const beefBowl = {
       source: "pot",
       until: {
         type: "time",
-        time: 10
+        value: 10
       },
       comment: "10分間煮込む",
       next: "serve"
