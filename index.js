@@ -251,8 +251,7 @@ const beefBowl = {
     cookRice: {
       type: "cookRice",
       source: "rice",
-      comment: "米を炊く",
-      next: "serve"
+      comment: "米を炊く"
     },
     makeBroth: {
       title: "煮汁を作る",
@@ -265,33 +264,30 @@ const beefBowl = {
         "tubeGinger"
       ],
       target: "pot",
-      comment: "煮汁を作る",
-      next: "boil"
+      comment: "煮汁を作る"
     },
     cutBeefRib: {
       type: "cut",
       source: "beefRib",
-      comment: "牛ばら肉を切る",
-      next: "addBeefRibToPot"
+      comment: "牛ばら肉を切る"
     },
     cutOnion: {
       type: "cut",
       source: "onion",
-      comment: "玉ねぎを1cm幅に切る",
-      next: "addOnionToPot"
+      comment: "玉ねぎを1cm幅に切る"
     },
     boil: {
       type: "bringToABoil",
       source: "pot",
       comment: "沸騰するまで茹でる",
-      next: "addBeefRibToPot"
+      depend: "makeBroth"
     },
     addBeefRibToPot: {
       type: "add",
       source: "beefRib",
       target: "pot",
       comment: "牛ばら肉を鍋へ",
-      next: "stew1"
+      depend: ["cutBeefRib", "boil"]
     },
     stew1: {
       type: "stew",
@@ -301,14 +297,14 @@ const beefBowl = {
         value: 5
       },
       comment: "5分間煮込む",
-      next: "addOnionToPot"
+      depend: "addBeefRibToPot"
     },
     addOnionToPot: {
       type: "add",
       source: "onion",
       target: "pot",
       comment: "玉ねぎを鍋へ",
-      next: "stew2"
+      depend: ["cutOnion", "stew1"]
     },
     stew2: {
       type: "stew",
@@ -318,7 +314,7 @@ const beefBowl = {
         value: 10
       },
       comment: "10分間煮込む",
-      next: "serve"
+      depend: "addOnionToPot"
     },
     serve: {
       type: "serve",
@@ -328,7 +324,7 @@ const beefBowl = {
       ],
       target: "bowl",
       comment: "米と具を盛り付ける",
-      next: "finish"
+      depend: ["cookRice", "stew2"]
     }
   }
 };
