@@ -162,15 +162,15 @@ const beefBowl = {
   description: "薄く切った牛肉とタマネギなどを醤油などで甘辛く煮込み、丼に盛った飯の上に載せた料理",
   containers: {
     pot: {
-      name: "鍋"
+      title: "鍋"
     },
     bowl: {
-      name: "どんぶり"
+      title: "どんぶり"
     }
   },
   materials: {
     rice: {
-      name: "米",
+      title: "米",
       quantity: [
         {
           amount: 1,
@@ -179,7 +179,7 @@ const beefBowl = {
       ]
     },
     water: {
-      name: "水",
+      title: "水",
       quantity: [
         {
           amount: 150,
@@ -188,7 +188,7 @@ const beefBowl = {
       ]
     },
     sugar: {
-      name: "砂糖",
+      title: "砂糖",
       quantity: [
         {
           amount: 1,
@@ -197,7 +197,7 @@ const beefBowl = {
       ]
     },
     soySauce: {
-      name: "醤油",
+      title: "醤油",
       quantity: [
         {
           amount: 3,
@@ -206,7 +206,7 @@ const beefBowl = {
       ]
     },
     sweetenedSake: {
-      name: "本みりん",
+      title: "本みりん",
       quantity: [
         {
           amount: 3,
@@ -215,7 +215,7 @@ const beefBowl = {
       ]
     },
     tubeGinger: {
-      name: "チューブ生姜",
+      title: "チューブ生姜",
       quantity: [
         {
           amount: 1,
@@ -224,7 +224,7 @@ const beefBowl = {
       ]
     },
     beefRib: {
-      name: "牛バラ肉",
+      title: "牛バラ肉",
       quantity: [
         {
           amount: 200,
@@ -233,7 +233,7 @@ const beefBowl = {
       ]
     },
     onion: {
-      name: "玉ねぎ",
+      title: "玉ねぎ",
       quantity: [
         {
           amount: 0.5,
