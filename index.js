@@ -170,7 +170,7 @@ const beefBowl = {
   },
   materials: {
     rice: {
-      title: "米",
+      type: "rice",
       quantity: [
         {
           amount: 1,
@@ -179,7 +179,7 @@ const beefBowl = {
       ]
     },
     water: {
-      title: "水",
+      type: "water",
       quantity: [
         {
           amount: 150,
@@ -188,7 +188,7 @@ const beefBowl = {
       ]
     },
     sugar: {
-      title: "砂糖",
+      type: "sugar",
       quantity: [
         {
           amount: 1,
@@ -197,7 +197,7 @@ const beefBowl = {
       ]
     },
     soySauce: {
-      title: "醤油",
+      type: "soySauce",
       quantity: [
         {
           amount: 3,
@@ -205,8 +205,8 @@ const beefBowl = {
         }
       ]
     },
-    sweetenedSake: {
-      title: "本みりん",
+    mirin: {
+      type: "mirin",
       quantity: [
         {
           amount: 3,
@@ -214,8 +214,8 @@ const beefBowl = {
         }
       ]
     },
-    tubeGinger: {
-      title: "チューブ生姜",
+    gingerTube: {
+      type: "gingerTube",
       quantity: [
         {
           amount: 1,
@@ -225,6 +225,7 @@ const beefBowl = {
     },
     beefRib: {
       title: "牛バラ肉",
+      type: "beef",
       quantity: [
         {
           amount: 200,
@@ -233,7 +234,7 @@ const beefBowl = {
       ]
     },
     onion: {
-      title: "玉ねぎ",
+      type: "onion",
       quantity: [
         {
           amount: 0.5,
@@ -260,8 +261,8 @@ const beefBowl = {
         "water",
         "sugar",
         "soySauce",
-        "sweetenedSake",
-        "tubeGinger"
+        "mirin",
+        "gingerTube"
       ],
       target: "pot",
       comment: "煮汁を作る"
