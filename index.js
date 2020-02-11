@@ -320,7 +320,7 @@ const beefBowl = {
     serve: {
       type: "serve",
       source: [
-        "riceBowl",
+        "rice",
         "pot"
       ],
       target: "riceBowl",
