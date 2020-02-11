@@ -162,10 +162,10 @@ const beefBowl = {
   description: "薄く切った牛肉とタマネギなどを醤油などで甘辛く煮込み、丼に盛った飯の上に載せた料理",
   containers: {
     pot: {
-      title: "鍋"
+      type: "pot",
     },
-    bowl: {
-      title: "どんぶり"
+    riceBowl: {
+      type: "riceBowl",
     }
   },
   materials: {
@@ -214,8 +214,8 @@ const beefBowl = {
         }
       ]
     },
-    gingerTube: {
-      type: "gingerTube",
+    ginger_tube: {
+      type: "ginger_tube",
       quantity: [
         {
           amount: 1,
@@ -262,7 +262,7 @@ const beefBowl = {
         "sugar",
         "soySauce",
         "mirin",
-        "gingerTube"
+        "ginger_tube"
       ],
       target: "pot",
       comment: "煮汁を作る"
@@ -320,10 +320,10 @@ const beefBowl = {
     serve: {
       type: "serve",
       source: [
-        "rice",
+        "riceBowl",
         "pot"
       ],
-      target: "bowl",
+      target: "riceBowl",
       comment: "米と具を盛り付ける",
       depend: ["cookRice", "stew2"]
     }
