@@ -272,10 +272,16 @@ const beefBowl = {
       source: "beefRib",
       comment: "牛ばら肉を切る"
     },
+    peelOnion: {
+      type: "peel",
+      source: "onion",
+      comment: ""
+    },
     cutOnion: {
       type: "cut",
       source: "onion",
-      comment: "玉ねぎを1cm幅に切る"
+      comment: "玉ねぎを1cm幅に切る",
+      depend: "peelOnion"
     },
     boil: {
       type: "bringToABoil",
