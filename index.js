@@ -252,7 +252,7 @@ const beefBowl = {
     cookRice: {
       type: "cookRice",
       source: "rice",
-      comment: "米を炊く"
+      description: "炊飯器で米を炊く。"
     },
     makeBroth: {
       title: "煮汁を作る",
@@ -265,35 +265,35 @@ const beefBowl = {
         "ginger_tube"
       ],
       target: "pot",
-      comment: "煮汁を作る"
+      description: "各調味料を計量し、鍋に入れる。"
     },
     cutBeefRib: {
       type: "cut",
       source: "beefRib",
-      comment: "牛ばら肉を切る"
+      description: "長辺5センチ程度になるようにカットする。大きさを揃えておくと、味の染み込み具合や食感を均一にできる。"
     },
     peelOnion: {
       type: "peel",
       source: "onion",
-      comment: ""
+      description: "玉ねぎを2分割して固いところを切り落とした後、素手で皮をむく。"
     },
     cutOnion: {
       type: "cut",
       source: "onion",
-      comment: "玉ねぎを1cm幅に切る",
+      description: "繊維と平行に、幅1センチ程度になるようにスライスする。",
       depend: "peelOnion"
     },
     boil: {
       type: "bringToABoil",
       source: "pot",
-      comment: "沸騰するまで茹でる",
+      description: "調味料が入った鍋を強火で沸騰させる。",
       depend: "makeBroth"
     },
     addBeefRibToPot: {
       type: "add",
       source: "beefRib",
       target: "pot",
-      comment: "牛ばら肉を鍋へ",
+      description: "中火に変更し、牛肉を加えて解きほぐす。",
       depend: ["cutBeefRib", "boil"]
     },
     stew1: {
@@ -303,14 +303,14 @@ const beefBowl = {
         type: "time",
         value: 5
       },
-      comment: "5分間煮込む",
+      description: "中火のまま5分間煮込む。アクが気になる場合は取り除いておく。",
       depend: "addBeefRibToPot"
     },
     addOnionToPot: {
       type: "add",
       source: "onion",
       target: "pot",
-      comment: "玉ねぎを鍋へ",
+      description: "玉ねぎを鍋に投入する。",
       depend: ["cutOnion", "stew1"]
     },
     stew2: {
@@ -320,7 +320,7 @@ const beefBowl = {
         type: "time",
         value: 10
       },
-      comment: "10分間煮込む",
+      description: "弱火に変更して煮込む。玉ねぎの透明度が増し、その後茶色く変色していくことを確認する。",
       depend: "addOnionToPot"
     },
     serve: {
@@ -330,7 +330,7 @@ const beefBowl = {
         "pot"
       ],
       target: "riceBowl",
-      comment: "米と具を盛り付ける",
+      description: "どんぶりにご飯と具材を盛り付ける。",
       depend: ["cookRice", "stew2"]
     }
   }
