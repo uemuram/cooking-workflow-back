@@ -34,142 +34,19 @@ const courses = [
   { id: 3, name: 'business intelligence' },
 ];
 
-const test2 = {
-  title: "テスト2",
-  description: "テスト2",
-  container: {},
-  material: {},
-  action: {
-    a: {
-      next: "f"
-    },
-    b: {
-      next: ["c", "d"]
-    },
-    c: {
-      next: "e"
-    },
-    d: {
-      next: "e"
-    },
-    e: {
-      next: "f"
-    },
-    f: {
-      next: "finish"
-    }
-  }
-};
-
-const test3 = {
-  title: "テスト3",
-  description: "テスト3",
-  container: {},
-  material: {},
-  action: {
-    a: {
-      next: "c"
-    },
-    b: {
-      next: ["f", "d"]
-    },
-    c: {
-      next: "e"
-    },
-    d: {
-      next: ["f", "g"]
-    },
-    e: {
-      next: "finish"
-    },
-    f: {
-      next: "h"
-    },
-    g: {
-      next: ["i", "j"]
-    },
-    h: {
-      next: "k"
-    },
-    i: {
-      next: "m"
-    },
-    j: {
-      next: "m"
-    },
-    k: {
-      next: "l"
-    },
-    l: {
-      next: "m"
-    },
-    m: {
-      next: "finish"
-    }
-  }
-};
-
-const test4 = {
-  title: "xx料理",
-  description: "yyをzzした料理です",
-  containers: {},
-  materials: {},
-  actions: {
-    a: {
-      next: "c"
-    },
-    b: {
-      next: [
-        "d"
-      ]
-    },
-    c: {
-      next: ["e", "f"]
-    },
-    d: {
-      next: [
-        "g"
-      ]
-    },
-    e: {
-      next: "j"
-    },
-    f: {
-      next: ["h", "i"]
-    },
-    g: {
-      next: [
-        "finish"
-      ]
-    },
-    h: {
-      next: "j"
-    },
-    i: {
-      next: "k"
-    },
-    j: {
-      next: "k"
-    },
-    k: {
-      next: "finish"
-    }
-  }
-};
-
 const beefBowl = {
   title: "牛丼",
   description: "薄く切った牛肉とタマネギなどを醤油などで甘辛く煮込み、丼に盛った飯の上に載せた料理",
   containers: {
-    pot: {
+    pot1: {
       type: "pot",
     },
-    riceBowl: {
+    riceBowl1: {
       type: "riceBowl",
     }
   },
   materials: {
-    rice: {
+    rice1: {
       type: "rice",
       quantity: [
         {
@@ -178,7 +55,7 @@ const beefBowl = {
         }
       ]
     },
-    water: {
+    water1: {
       type: "water",
       quantity: [
         {
@@ -187,7 +64,7 @@ const beefBowl = {
         }
       ]
     },
-    sugar: {
+    sugar1: {
       type: "sugar",
       quantity: [
         {
@@ -196,7 +73,7 @@ const beefBowl = {
         }
       ]
     },
-    soySauce: {
+    soySauce1: {
       type: "soySauce",
       quantity: [
         {
@@ -205,7 +82,7 @@ const beefBowl = {
         }
       ]
     },
-    mirin: {
+    mirin1: {
       type: "mirin",
       quantity: [
         {
@@ -214,7 +91,7 @@ const beefBowl = {
         }
       ]
     },
-    ginger_tube: {
+    ginger_tube1: {
       type: "ginger_tube",
       quantity: [
         {
@@ -233,7 +110,7 @@ const beefBowl = {
         }
       ]
     },
-    onion: {
+    onion1: {
       type: "onion",
       quantity: [
         {
@@ -251,20 +128,20 @@ const beefBowl = {
   actions: {
     cookRice: {
       type: "cookRice",
-      source: "rice",
+      source: "rice1",
       description: "炊飯器で米を炊く。"
     },
     makeBroth: {
       title: "煮汁を作る",
       type: "add",
       source: [
-        "water",
-        "sugar",
-        "soySauce",
-        "mirin",
-        "ginger_tube"
+        "water1",
+        "sugar1",
+        "soySauce1",
+        "mirin1",
+        "ginger_tube1"
       ],
-      target: "pot",
+      target: "pot1",
       description: "各調味料を計量し、鍋に入れる。"
     },
     cutBeefRib: {
@@ -274,31 +151,31 @@ const beefBowl = {
     },
     peelOnion: {
       type: "peel",
-      source: "onion",
+      source: "onion1",
       description: "玉ねぎを2分割して固いところを切り落とした後、素手で皮をむく。"
     },
     cutOnion: {
       type: "cut",
-      source: "onion",
+      source: "onion1",
       description: "繊維と平行に、幅1センチ程度になるようにスライスする。",
       depend: "peelOnion"
     },
     boil: {
       type: "bringToABoil",
-      source: "pot",
+      source: "pot1",
       description: "調味料が入った鍋を強火で沸騰させる。",
       depend: "makeBroth"
     },
     addBeefRibToPot: {
       type: "add",
       source: "beefRib",
-      target: "pot",
+      target: "pot1",
       description: "中火に変更し、牛肉を加えて解きほぐす。",
       depend: ["cutBeefRib", "boil"]
     },
     stew1: {
       type: "stew",
-      source: "pot",
+      source: "pot1",
       until: {
         type: "time",
         value: 5
@@ -308,14 +185,14 @@ const beefBowl = {
     },
     addOnionToPot: {
       type: "add",
-      source: "onion",
-      target: "pot",
+      source: "onion1",
+      target: "pot1",
       description: "玉ねぎを鍋に投入する。",
       depend: ["cutOnion", "stew1"]
     },
     stew2: {
       type: "stew",
-      source: "pot",
+      source: "pot1",
       until: {
         type: "time",
         value: 10
@@ -326,10 +203,10 @@ const beefBowl = {
     serve: {
       type: "serve",
       source: [
-        "rice",
-        "pot"
+        "rice1",
+        "pot1"
       ],
-      target: "riceBowl",
+      target: "riceBowl1",
       description: "どんぶりにご飯と具材を盛り付ける。",
       depend: ["cookRice", "stew2"]
     }
