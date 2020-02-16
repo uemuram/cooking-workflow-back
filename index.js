@@ -75,6 +75,7 @@ const beefBowl = {
     },
     soySauce1: {
       type: "soySauce",
+      description: "一般的なこいくち醤油",
       quantity: [
         {
           amount: 3,
@@ -103,6 +104,7 @@ const beefBowl = {
     beefRib: {
       title: "牛バラ肉",
       type: "beef",
+      description: "薄くて細切りの牛バラ肉",
       quantity: [
         {
           amount: 200,
