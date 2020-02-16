@@ -182,7 +182,7 @@ const beefBowl = {
         type: "time",
         value: 5
       },
-      description: "中火のまま5分間煮込む。アクが気になる場合は取り除いておく。",
+      description: "中火のまま5分間煮込む。灰汁が気になる場合は取り除いておく。",
       depend: "addBeefRibToPot"
     },
     addOnionToPot: {
