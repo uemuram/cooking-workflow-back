@@ -43,6 +43,7 @@ const beefBowl = {
     },
     riceBowl1: {
       type: "riceBowl",
+      description: "一般的などんぶり"
     }
   },
   materials: {
