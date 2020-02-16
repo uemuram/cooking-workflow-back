@@ -154,7 +154,7 @@ const beefBowl = {
     peelOnion: {
       type: "peel",
       source: "onion1",
-      description: "玉ねぎを2分割して固いところを切り落とした後、素手で皮をむく。"
+      description: "2分割して固いところを切り落とした後、素手で皮をむく。"
     },
     cutOnion: {
       type: "cut",
