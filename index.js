@@ -104,7 +104,7 @@ const beefBowl = {
     beefRib: {
       title: "牛バラ肉",
       type: "beef",
-      description: "薄くて細切りの牛バラ肉",
+      description: "薄く細切りの牛バラ肉",
       quantity: [
         {
           amount: 200,
